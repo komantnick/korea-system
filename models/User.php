@@ -65,7 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]]);
+        return static::findOne(['id' => $id]);
     }
 
     /**
@@ -84,7 +84,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => [self::STATUS_ACTIVE,self::STATUS_ADMIN]]);
+        return static::findOne(['username' => $username]);
     }
 
     /**
@@ -95,7 +95,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByEmail($email)
     {
-        return static::findOne(['email' => $email, 'status' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]]);
+        return static::findOne(['email' => $email]);
     }
 
     /**
@@ -112,7 +112,6 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => [self::STATUS_ACTIVE,self::STATUS_ADMIN],
         ]);
     }
 
